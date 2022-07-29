@@ -20,7 +20,7 @@ let fligths = [
         destination: "BERLIN",
         flight: "BE 309",
         gate: "B01",
-        remarks: "ON TIME"
+        remarks: "CANCELLED"
     },
     {
         time: "10:15",
@@ -34,14 +34,14 @@ let fligths = [
         destination: "LONDON",
         flight: "GB 122",
         gate: "B06",
-        remarks: "ON TIME"
+        remarks: "DELAYED"
     },
     {
         time: "11:20",
         destination: "TORONTO",
         flight: "CA 040",
         gate: "B01",
-        remarks: "ON TIME"
+        remarks: "CANCELLED"
     },
     {
         time: "12:05",
@@ -58,7 +58,15 @@ function populateTable() {
 
         for(const flightDetail in flight) {
             const tableCell = document.createElement("td")
-            tableCell.innerText = flight[flightDetail]
+            const word = Array.from(flight[flightDetail])
+
+            for(const letter of word) {
+                const letterElement = document.createElement('div')
+                letterElement.classList.add('flip')
+                letterElement.textContent = letter
+                tableCell.append(letterElement)
+            }
+
             tableRow.append(tableCell)
         }
         
